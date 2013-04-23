@@ -1,0 +1,36 @@
+var fs = require('fs');
+var ini = require('ini');
+var path = require('path');
+
+
+module.exports = function(dir,cb){
+  var config = path.join(dir,'.git/config');
+  fs.exists(config,function(exists){
+    if(!exists) return cb(new Error('no gitconfig to be found at '+config));
+    fs.readFile(config,function(err,data){
+      if(err) return cb(err);
+      try{
+        cb(false,format(ini.parse(data.toString())));
+      } catch (e){
+        return cb(e);
+      }
+    });
+  });
+}
+
+function format(data){
+  var out = {};
+  Object.keys(data).forEach(function(k){
+    if(k.indexOf('"')> -1) {
+      var parts = k.split('"');
+      var parentKey = parts.shift().trim();
+      var childKey = parts.shift().trim();
+      if(!out[parentKey]) out[parentKey] = {};
+      out[parentKey][childKey] = data[k];
+    } else {
+      out[k] = data[k];
+    }
+  });
+  return out; 
+}
+
