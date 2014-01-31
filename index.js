@@ -10,10 +10,11 @@ module.exports = function(dir,cb){
     fs.readFile(config,function(err,data){
       if(err) return cb(err);
       try{
-        cb(false,format(ini.parse(data.toString())));
+        var formatted = format(ini.parse(data.toString()));
       } catch (e){
         return cb(e);
       }
+      cb(false,formatted);
     });
   });
 }
