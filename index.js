@@ -4,19 +4,18 @@ var path = require('path');
 
 
 module.exports = function(dir,cb){
-  var config = path.join(dir,'.git/config');
-  fs.exists(config,function(exists){
-    if(!exists) return cb(new Error('no gitconfig to be found at '+config));
+  findGit(dir,function(config) {
+    if(!config) return cb(new Error('no gitconfig to be found at '+dir))
     fs.readFile(config,function(err,data){
       if(err) return cb(err);
       try{
-        var formatted = format(ini.parse(data.toString()));
+       var formatted = format(ini.parse(data.toString()));
       } catch (e){
-        return cb(e);
+       return cb(e);
       }
       cb(false,formatted);
-    });
-  });
+    })
+  })
 }
 
 function format(data){
@@ -35,3 +34,11 @@ function format(data){
   return out; 
 }
 
+function findGit(dir, cb) {
+  var folder = path.join(dir, '.git/config')
+  fs.exists(folder,function(exists) {
+    if(exists) return cb(folder)
+    if(dir === '/') return cb(false)
+    findGit(path.resolve(dir, '..'), cb)
+  })
+}
