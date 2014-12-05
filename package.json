@@ -1,6 +1,6 @@
 {
   "name": "gitconfiglocal",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "parse the .git/config file into a useful data structure",
   "main": "index.js",
   "scripts": {
