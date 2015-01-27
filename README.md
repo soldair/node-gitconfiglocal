@@ -1,5 +1,5 @@
 
-[![Build Status](https://secure.travis-ci.org/soldair/node-gitconfiglocal.png)](http://travis-ci.org/soldair/node-gitconfiglocal)
+[![Build Status](https://travis-ci.org/soldair/node-gitconfiglocal.svg?branch=master)](https://travis-ci.org/soldair/node-gitconfiglocal)
 
 gitconfiglocal
 ==============
@@ -30,6 +30,3 @@ gitconfig('./',function(err,config){
 
 
 ```
-
-
-
