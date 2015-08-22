@@ -38,7 +38,7 @@ function findGit(dir, cb) {
   var folder = path.join(dir, '.git/config')
   fs.exists(folder,function(exists) {
     if(exists) return cb(folder)
-    if(dir === '/') return cb(false)
+    if(dir === path.resolve(dir, '..')) return cb(false)
     findGit(path.resolve(dir, '..'), cb)
   })
 }
