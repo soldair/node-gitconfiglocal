@@ -3,8 +3,12 @@ var ini = require('ini');
 var path = require('path');
 
 
-module.exports = function(dir,cb){
-  findGit(dir,function(config) {
+module.exports = function(dir,options,cb){
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  findGit(dir,options,function(config) {
     if(!config) return cb(new Error('no gitconfig to be found at '+dir))
     fs.readFile(config,function(err,data){
       if(err) return cb(err);
@@ -31,14 +35,14 @@ function format(data){
       out[k] = data[k];
     }
   });
-  return out; 
+  return out;
 }
 
-function findGit(dir, cb) {
-  var folder = path.join(dir, '.git/config')
+function findGit(dir,options,cb){
+  var folder = path.resolve(dir, process.env.GIT_DIR || options.gitDir || '.git', 'config');
   fs.exists(folder,function(exists) {
-    if(exists) return cb(folder)
-    if(dir === path.resolve(dir, '..')) return cb(false)
-    findGit(path.resolve(dir, '..'), cb)
-  })
+    if(exists) return cb(folder);
+    if(dir === path.resolve(dir, '..')) return cb(false);
+    findGit(path.resolve(dir, '..'), options, cb);
+  });
 }
