@@ -39,7 +39,7 @@ function format(data){
 }
 
 function findGit(dir,options,cb){
-  var folder = path.resolve(dir, process.env.GIT_DIR || options.gitDir || '.git', 'config');
+  var folder = path.resolve(dir, options.gitDir || process.env.GIT_DIR || '.git', 'config');
   fs.exists(folder,function(exists) {
     if(exists) return cb(folder);
     if(dir === path.resolve(dir, '..')) return cb(false);
