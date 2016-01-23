@@ -4,7 +4,7 @@
 gitconfiglocal
 ==============
 
-parse the `$GIT_DIR/config` file into a useful data structure
+parse the `.git/config` file into a useful data structure
 
 
 example
@@ -31,7 +31,8 @@ gitconfig('./',function(err,config){
 
 ```
 
-- specify GIT_DIR via options:
+- specify $GIT_DIR via options:
 ```js
 gitconfig('./', { gitDir: 'path/to/gitdir' }, cb);
+
 ```
