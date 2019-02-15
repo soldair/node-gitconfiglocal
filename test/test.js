@@ -48,3 +48,11 @@ test('from subfolder can get gitconfig in $GIT_DIR (absolute path) other than de
     t.end();
   });
 });
+
+test('after non key remote', function(t) {
+  process.env.GIT_DIR = "_git";
+  gitconfig(path.resolve(__dirname, 'after-remote-without-key'), function(err, data) {
+    t.ok(data && data.remote && data.remote.origin && data.remote.origin.url === 'https://example.com/repo.git', 'should have url');
+    t.end();
+  });
+})
