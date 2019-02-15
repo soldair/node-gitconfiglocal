@@ -1,3 +1,4 @@
+//@ts-check
 var fs = require('fs');
 var ini = require('ini');
 var path = require('path');
@@ -32,7 +33,9 @@ function format(data){
       if(!out[parentKey]) out[parentKey] = {};
       out[parentKey][childKey] = data[k];
     } else {
-      out[k] = {...out[k], ...data[k]};
+      out[k] = merge(out[k],data[k])
+      // cant start using these without bumping the major
+      //out[k] = {...out[k], ...data[k]};
     }
   });
   return out;
@@ -45,4 +48,14 @@ function findGit(dir,options,cb){
     if(dir === path.resolve(dir, '..')) return cb(false);
     findGit(path.resolve(dir, '..'), options, cb);
   });
+}
+
+function merge(){
+  var a = {}
+  for(var i=arguments.length;i>=0;--i){
+    Object.keys(arguments[i]||{}).forEach((k)=>{
+      a[k] = arguments[i][k]
+    })
+  }
+  return a;
 }

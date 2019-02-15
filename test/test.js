@@ -5,7 +5,7 @@ var fse = require('fs-extra');
 
 test("can get gitconfig",function(t) {
   gitconfig(path.resolve(__dirname,'..'),function(err,data){
-    t.ok(!err,'should not have error getting gitconfig');
+    t.ok(!err,'should not have error getting gitconfig '+err);
     t.ok(data,'should have config data');
     t.end();
   });
