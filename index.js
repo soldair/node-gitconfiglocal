@@ -32,7 +32,7 @@ function format(data){
       if(!out[parentKey]) out[parentKey] = {};
       out[parentKey][childKey] = data[k];
     } else {
-      out[k] = data[k];
+      out[k] = {...out[k], ...data[k]};
     }
   });
   return out;

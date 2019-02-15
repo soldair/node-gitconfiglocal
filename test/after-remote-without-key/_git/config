@@ -1,0 +1,5 @@
+[remote "origin"]
+	url = https://example.com/repo.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote]
+	pushDefault = origin
