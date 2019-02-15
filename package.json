@@ -24,6 +24,6 @@
   },
   "devDependencies": {
     "fs-extra": "^0.26.4",
-    "tape": "^3.4.0"
+    "tape": "^4.10.1"
   }
 }
