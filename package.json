@@ -20,7 +20,7 @@
   "license": "BSD-3-Clause",
   "readmeFilename": "README.md",
   "dependencies": {
-    "ini": "^1.3.2"
+    "ini": "^1.3.5"
   },
   "devDependencies": {
     "fs-extra": "^0.26.4",
