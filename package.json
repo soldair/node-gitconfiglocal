@@ -17,7 +17,7 @@
     "config"
   ],
   "author": "Ryan Day",
-  "license": "BSD",
+  "license": "BSD-3-Clause",
   "readmeFilename": "README.md",
   "dependencies": {
     "ini": "^1.3.2"
