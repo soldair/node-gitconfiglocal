@@ -1,20 +1,17 @@
-
 [![Build Status](https://travis-ci.org/soldair/node-gitconfiglocal.svg?branch=master)](https://travis-ci.org/soldair/node-gitconfiglocal)
 
-gitconfiglocal
-==============
+# gitconfiglocal
 
 parse the `.git/config` file into a useful data structure
 
-
-example
-=======
+# example
 
 - search config in $GIT_DIR (.git by default)
+
 ```js
 var gitconfig = require('gitconfiglocal');
 
-gitconfig('./',function(err,config){
+gitconfig('./').then((config) => {
   console.log(config);
   /* prints:
   { core:
@@ -28,11 +25,10 @@ gitconfig('./',function(err,config){
           fetch: '+refs/heads/*:refs/remotes/origin/*' } } }
   */
 });
-
 ```
 
 - specify $GIT_DIR via options:
-```js
-gitconfig('./', { gitDir: 'path/to/gitdir' }, cb);
 
+```js
+gitconfig('./', { gitDir: 'path/to/gitdir' });
 ```

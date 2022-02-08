@@ -16,6 +16,9 @@
     "git",
     "config"
   ],
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "author": "Ryan Day",
   "license": "BSD",
   "readmeFilename": "README.md",
@@ -24,6 +27,10 @@
   },
   "devDependencies": {
     "fs-extra": "^0.26.4",
+    "prettier": "^2.5.1",
     "tape": "^4.10.1"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
