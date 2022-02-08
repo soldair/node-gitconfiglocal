@@ -3,7 +3,8 @@
   "version": "2.1.0",
   "description": "parse the .git/config file into a useful data structure",
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "scripts": {
     "test": "node test/test.js"
