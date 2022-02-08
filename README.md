@@ -4,7 +4,7 @@
 
 parse the `.git/config` file into a useful data structure
 
-# example
+## example
 
 - search config in $GIT_DIR (.git by default)
 
@@ -32,3 +32,7 @@ gitconfig('./').then((config) => {
 ```js
 gitconfig('./', { gitDir: 'path/to/gitdir' });
 ```
+
+## license
+
+licensed under the [3-Clause BSD license](./LICENSE).
